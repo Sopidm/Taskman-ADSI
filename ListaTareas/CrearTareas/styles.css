@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.section{
+    height: 33%;
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.usuario{
+    margin-top: 16px;
+    margin-left: 4px;
+    border-radius: 6px;
+    background-color: white;
+    border: 2px blue solid;
+    width: 25%;
+    height: 540px;
+    padding: 4px 8px 4px;
+}
+.contenido{
+    position: relative;
+    background-color: white;
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 16px;
+    border: 2px blue solid;
+    border-radius: 6px;
+    padding: 4px 8px 4px;
+}
+.section2 i{
+    line-height: 35px;
+}
+.section, .section2, .section3{
+    text-align: center;
+}
+.avatar{
+    padding-top: 14px;
+    width: 80px;
+    height: 100px;
+}
+
+form {
+    margin: 20px;
+}
+
+#titulo {
+    text-align: left;
+}
+
+/* Estilos para los campos de entrada */
+.form-control {
+    margin-bottom: 10px;
+}
+
+/* Estilos para los botones */
+.btn {
+    margin-top: 10px;
+}
+
+/* Estilos para las etiquetas de los campos */
+.form-label {
+    font-weight: bold;
+}
+
+/* Estilos para las opciones del select */
+.form-select {
+    margin-bottom: 10px;
+}
+
+/* Estilos para el contenedor de los botones al final del formulario */
+.col-12 {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Estilos para el hr */
+hr {
+    margin: 20px 0;
+}

@@ -92,7 +92,7 @@ include "../includes/connect.php"
                   ?>
                 <tr>
                   <th scope="row" ><?php echo $fila["codigo"];?></th>
-                  <td  ><?=  $fila['titulo'];?></td>
+                  <td  ><?= $fila['titulo'];?></td>
                   <td  ><?= $fila['estados'];?></td>
                   <td  ><?= $fila['categorias'];?></td>
                   <td  ><?= $fila['prioridades'];?></td>
