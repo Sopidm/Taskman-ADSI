@@ -1,7 +1,6 @@
 <?php
 include "../includes/connect.php"
 ?>
-
 <!doctype html>
 <html lang="es">
   <head>
@@ -21,7 +20,6 @@ include "../includes/connect.php"
     <div class="container">
         <div class="usuario">
             <section class="section">
-              
              <a href="Perfil/index.html" ><img src="../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
              <br>
              <br>
@@ -70,8 +68,7 @@ include "../includes/connect.php"
                 <th scope="col" style="width:100.4px">Prioridad</th>
                 <th scope="col" style="width:150.6px">Fecha Limite</th>
                 <th scope="col" style="width:100.4px">Editar</th>
-                <th scope="col" style="width:100.4px">Eliminar</th>
-                    
+                <th scope="col" style="width:100.4px">Eliminar</th>   
                </tr>
               </thead>
               <tbody >
@@ -85,10 +82,8 @@ include "../includes/connect.php"
                INNER JOIN estado as Es ON Ta.tblEstadoId = Es.idEstado
                INNER JOIN categoria as Ca ON Ta.tblCategoriaId = Ca.IdCategoria
                 INNER JOIN prioridad as Pr ON Ta.tblPrioridadId = Pr.IdPrioridad";
-
                $query = mysqli_query($conn, $query);
                while ($fila = mysqli_fetch_assoc($query)){
-                
                   ?>
                 <tr>
                   <th scope="row" ><?php echo $fila["codigo"];?></th>
@@ -100,7 +95,6 @@ include "../includes/connect.php"
                   <td ><i class="bi bi-pencil-square"></i></td>
                   <td ><i class="bi bi-archive"></i></td>
                 </tr>
-                
               </tbody>
               <?php 
               }
