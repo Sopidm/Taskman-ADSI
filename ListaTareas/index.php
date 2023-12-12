@@ -48,7 +48,7 @@ include "../includes/connect.php"
         </div>
         <div class="contenido"> 
           <div class="cabeza">
-          <a href="#"><button type="button" class="btn btn-outline-primary" >Crear Tarea</button></a>
+          <a href="CrearTareas/index.php"><button type="button" class="btn btn-outline-primary" >Crear Tarea</button></a>
           <form class="d-flex" role="search" method="get">
           <!-- BUscador interfaz rapida con JS  -->
           <label for="buscador" style="padding:4px 5px 0px 0px; position:relative; float:left;" >Buscar:  </label>
@@ -81,22 +81,67 @@ include "../includes/connect.php"
                FROM tareas as Ta
                INNER JOIN estado as Es ON Ta.tblEstadoId = Es.idEstado
                INNER JOIN categoria as Ca ON Ta.tblCategoriaId = Ca.IdCategoria
-                INNER JOIN prioridad as Pr ON Ta.tblPrioridadId = Pr.IdPrioridad";
+                INNER JOIN prioridad as Pr ON Ta.tblPrioridadId = Pr.IdPrioridad ORDER BY Ta.codigo ASC ";
                $query = mysqli_query($conn, $query);
                while ($fila = mysqli_fetch_assoc($query)){
-                  ?>
-                <tr>
-                  <th scope="row" ><?php echo $fila["codigo"];?></th>
-                  <td  ><?= $fila['titulo'];?></td>
-                  <td  ><?= $fila['estados'];?></td>
-                  <td  ><?= $fila['categorias'];?></td>
-                  <td  ><?= $fila['prioridades'];?></td>
-                  <td  ><?= $fila['fecha_vencimiento'];?></td>
-                  <td ><i class="bi bi-pencil-square"></i></td>
-                  <td ><i class="bi bi-archive"></i></td>
-                </tr>
+                $dias = $conn->query("SELECT DATEDIFF(CURDATE(),'fecha_vencimiento') AS dias");
+                $dias = mysqli_fetch_assoc($dias);
+                $intervalodias = $dias['dias'];
+                 
+
+                ?>
+
+                <?php 
+                if($intervalodias > 7){ ?>
+                <tr >
+                    <th scope="row" ><?php echo $fila["codigo"];?></th>
+                    <td  ><?= $fila['titulo'];?></td>
+                    <td  ><?= $fila['estados'];?></td>
+                    <td  ><?= $fila['categorias'];?></td>
+                    <td  ><?= $fila['prioridades'];?></td>
+                    <td style="background-color: blue;" ><?= $fila['fecha_vencimiento'];?></td>
+                    <td ><a href="../includes/editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
+                    <td ><a href="../includes/eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" ><i class="bi bi-archive"></i></button></a></td>
+                  </tr>
+                  <? }elseif($intervalodias < 7 && $intervalodias>=4){ ?>
+                  <tr>
+                    <th scope="row" ><?php echo $fila["codigo"];?></th>
+                    <td  ><?= $fila['titulo'];?></td>
+                    <td  ><?= $fila['estados'];?></td>
+                    <td  ><?= $fila['categorias'];?></td>
+                    <td  ><?= $fila['prioridades'];?></td>
+                    <td  style="background-color: yellow;" ><?= $fila['fecha_vencimiento'];?></td>
+                    <td ><a href="../includes/editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
+                    <td ><a href="../includes/eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" ><i class="bi bi-archive"></i></button></a></td>
+                  </tr>
+                  <?php }elseif($intervalodias < 4 && $intervalodias>0){ ?>
+                  <tr >
+                    <th scope="row" ><?php echo $fila["codigo"];?></th>
+                    <td  ><?= $fila['titulo'];?></td>
+                    <td  ><?= $fila['estados'];?></td>
+                    <td  ><?= $fila['categorias'];?></td>
+                    <td  ><?= $fila['prioridades'];?></td>
+                    <td  style="background-color: red;"><?= $fila['fecha_vencimiento'];?></td>
+                    <td ><a href="../includes/editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
+                    <td ><a href="../includes/eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" ><i class="bi bi-archive"></i></button></a></td>
+                  </tr>
+                  <?php }elseif($intervalodias < 0){ ?>
+                  <tr >
+                    <th scope="row" ><?php echo $fila["codigo"];?></th>
+                    <td  ><?= $fila['titulo'];?></td>
+                    <td  >Cerrado</td>
+                    <td  ><?= $fila['categorias'];?></td>
+                    <td  ><?= $fila['prioridades'];?></td>
+                    <td  style="background-color: grey;"><?= $fila['fecha_vencimiento'];?></td>
+                    <td ><a href="../includes/editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
+                    <td ><a href="../includes/eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" ><i class="bi bi-archive"></i></button></a></td>
+                  </tr>
+                  <?php }?>
+                  
+                  
               </tbody>
               <?php 
+                  
               }
               ?>
             </table>
@@ -105,5 +150,6 @@ include "../includes/connect.php"
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="../js/buscador.js"></script>
+    <script src="../js/eliminar.js"></script>
   </body>
 </html>
