@@ -1,3 +1,6 @@
+<?php 
+include "../../includes/insertar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,40 +46,40 @@
             </section>
         </div>
         <div class="contenido">
-            <form class="row g-3 needs-validation" novalidate action="" method="post">
+            <form class="row g-3 needs-validation" novalidate action="../../includes/insertar.php" method="post">
                 <div id="titulo"><h3>CREAR TAREA</h3>
                 </div>
                 <hr>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <label for="validationCustom01" class="form-label">USUARIO</label>
                   <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" >
                   <div class="valid-feedback">
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label">TÍTULO</label>
-                  <input type="text" class="form-control" id="validationCustom02" placeholder="Título">
+                  <label for="titulo" class="form-label">TÍTULO</label>
+                  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
                   <div class="valid-feedback">
                   </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <label for="validationCustom03" class="form-label">CÓDIGO</label>
                   <input type="num" class="form-control" id="validationCustom02" placeholder="Código">
                   <div class="invalid-feedback">
                     Please provide a valid city.
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-4">
-                  <label for="validationCustom04" class="form-label">CATEGORÍA</label>
-                  <select class="form-select" id="validationCustom04">
+                  <label for="categoria" class="form-label">CATEGORÍA</label>
+                  <select class="form-select" id="categoria" name="categoria">
                     <option selected disabled value="">Seleccione...</option>
-                    <option>Categoria-1</option>
-                    <option>Categoria-2</option>
-                    <option>Categoria-3</option>
+                    <option value="1">Personal</option>
+                    <option value="2">Trabajo</option>
+                    <option value="3">Estudio</option>
                   </select>  
                 </div>
                 <hr>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <label for="validationCustom05" class="form-label">RECURSOS</label>
                     <select class="form-select" id="validationCustom05">
                       <option selected disabled value="">Seleccione...</option>
@@ -86,63 +89,68 @@
                     </select>
                     <div class="invalid-feedback">
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-md-4">
-                    <label for="validationCustom06" class="form-label">PRIORIDAD</label>
-                    <select class="form-select" id="validationCustom04">
+                    <label for="prioridad" class="form-label">PRIORIDAD</label>
+                    <select class="form-select" id="prioridad" name="prioridad">
                       <option selected disabled value="">Seleccione...</option>
-                      <option>Alta</option>
-                      <option>Media</option>
-                      <option>Baja</option>
+                      <option value="1">Alta</option>
+                      <option value="2">Media</option>
+                      <option value="3">Baja</option>
                     </select>
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label for="validationCustom07" class="form-label">ESTADO</label>
-                    <select class="form-select" id="validationCustom04">
+                    <label for="estado" class="form-label">ESTADO</label>
+                    <select class="form-select" id="estado" name="estado">
                       <option selected disabled value="">Seleccione...</option>
-                      <option>Pendiente</option>
-                      <option>En curso</option>
-                      <option>Terminado</option>
+                      <option value="1">En curso</option>
+                      <option value="2">Pendiente</option>
+                      <option value="3">Terminado</option>
+                      <option value="4">Cerrado</option>
                     </select>
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="mb-1">
-                    <label for="exampleFormControlTextarea1" class="form-label">DESCRIPCION DE LA TAREA</label>
-                    <textarea class="form-control" placeholder="Descripción de la tarea" rows="1"></textarea>
+                    <label for="descripcion" class="form-label">DESCRIPCION DE LA TAREA</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción de la tarea" rows="1"></textarea>
                   </div>
                   <hr>
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                     <label for="validationCustom08" class="form-label">FECHA INICO</label>
                     <input type="date" class="form-control" id="validationCustom03">
                     <div class="invalid-feedback">
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-md-4">
-                    <label for="validationCustom09" class="form-label">FECHA FIN</label>
-                    <input type="date" class="form-control" id="validationCustom03">
+                    <label for="fecha_vencimiento" class="form-label">FECHA FIN</label>
+                    <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
                     <div class="invalid-feedback">
                     </div>
                   </div>
-                   <div class="col-md-4">
-                      <label for="validationCustom010" class="form-label">AUDITOR</label>
-                      <select class="form-select" id="validationCustom04" required="">
+                   <!-- <div class="col-md-4">
+                      <label for="auditoria" class="form-label">AUDITOR</label>
+                      <select class="form-select" id="auditoria" name="auditoria" >
                         <option selected disabled value="">Seleccione...</option>
                         <option>Auditor-1</option>
                         <option>Auditor-2</option>
                         <option>Auditor-3</option>
                         <option>Auditor-4</option>
                         </select>
-                  </div>
+                  </div> -->
                   <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                    <button type="reset" class="btn btn-outline-danger">Cancelar</button>
+                    <button class="btn btn-primary" name="insertar" type="submit">Guardar</button>
+                    <a href="../index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
                   </div>  
             </form>
         </div>
     </div>
+    
+    
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
