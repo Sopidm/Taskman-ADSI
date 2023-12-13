@@ -1,5 +1,5 @@
 <?php 
-include "../../includes/insertar.php";
+include "../../includes/connect.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,7 +46,7 @@ include "../../includes/insertar.php";
             </section>
         </div>
         <div class="contenido">
-            <form class="row g-3 needs-validation" novalidate action="../../includes/insertar.php" method="post">
+            <form class="row g-3 needs-validation" novalidate  method="post">
                 <div id="titulo"><h3>CREAR TAREA</h3>
                 </div>
                 <hr>
@@ -58,7 +58,7 @@ include "../../includes/insertar.php";
                 </div> -->
                 <div class="col-md-4">
                   <label for="titulo" class="form-label">TÍTULO</label>
-                  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+                  <textarea type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" required></textarea>
                   <div class="valid-feedback">
                   </div>
                 </div>
@@ -71,7 +71,7 @@ include "../../includes/insertar.php";
                 </div> -->
                 <div class="col-md-4">
                   <label for="categoria" class="form-label">CATEGORÍA</label>
-                  <select class="form-select" id="categoria" name="categoria">
+                  <select class="form-select" id="categoria" name="categoria" required>
                     <option selected disabled value="">Seleccione...</option>
                     <option value="1">Personal</option>
                     <option value="2">Trabajo</option>
@@ -92,7 +92,7 @@ include "../../includes/insertar.php";
                   </div> -->
                   <div class="col-md-4">
                     <label for="prioridad" class="form-label">PRIORIDAD</label>
-                    <select class="form-select" id="prioridad" name="prioridad">
+                    <select class="form-select" id="prioridad" name="prioridad" required>
                       <option selected disabled value="">Seleccione...</option>
                       <option value="1">Alta</option>
                       <option value="2">Media</option>
@@ -103,7 +103,7 @@ include "../../includes/insertar.php";
                   </div>
                   <div class="col-md-4">
                     <label for="estado" class="form-label">ESTADO</label>
-                    <select class="form-select" id="estado" name="estado">
+                    <select class="form-select" id="estado" name="estado" required>
                       <option selected disabled value="">Seleccione...</option>
                       <option value="1">En curso</option>
                       <option value="2">Pendiente</option>
@@ -115,7 +115,7 @@ include "../../includes/insertar.php";
                   </div>
                   <div class="mb-1">
                     <label for="descripcion" class="form-label">DESCRIPCION DE LA TAREA</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción de la tarea" rows="1"></textarea>
+                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción de la tarea" rows="1" required></textarea>
                   </div>
                   <hr>
                   <!-- <div class="col-md-4">
@@ -126,7 +126,7 @@ include "../../includes/insertar.php";
                   </div> -->
                   <div class="col-md-4">
                     <label for="fecha_vencimiento" class="form-label">FECHA FIN</label>
-                    <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
+                    <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required>
                     <div class="invalid-feedback">
                     </div>
                   </div>
@@ -145,6 +145,24 @@ include "../../includes/insertar.php";
                     <a href="../index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
                   </div>  
             </form>
+            <?php 
+
+            if(isset($_POST['insertar'])){
+                $titulo = $_POST['titulo'];
+                $descripcion = $_POST['descripcion'];
+                $fecha_vencimiento = $_POST['fecha_vencimiento'];
+                $categoria = $_POST['categoria'];
+                $prioridad = $_POST['prioridad'];
+                $estado = $_POST['estado'];
+
+                $editar = $conn->query("INSERT INTO tareas (titulo,descripcion,fecha_vencimiento,tblCategoriaId,tblPrioridadId,tblEstadoId) values ('$titulo','$descripcion','$fecha_vencimiento','$categoria','$prioridad','$estado')");
+                
+                if($editar){
+                header("Location: ../ListaTareas/index.php");
+                }
+                }
+            ?>
+
         </div>
     </div>
     

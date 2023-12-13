@@ -106,7 +106,7 @@ include "connect.php";
                   <div class="col-md-4">
                     <label for="prioridad" class="form-label">PRIORIDAD</label>
                     <select class="form-select" id="prioridad" name="prioridad">
-                      <option selected disabled value=""><?= $row['prioridades'];?></option>
+                      <option selected  value=""><?= $row['prioridades'];?></option>
                       <option value="1">Alta</option>
                       <option value="2">Media</option>
                       <option value="3">Baja</option>
@@ -117,7 +117,7 @@ include "connect.php";
                   <div class="col-md-4">
                     <label for="estado" class="form-label">ESTADO</label>
                     <select class="form-select" id="estado" name="estado">
-                      <option selected disabled value=""><?= $row['estados'];?></option>
+                      <option selected  value=""><?= $row['estados'];?></option>
                       <option value="1">En curso</option>
                       <option value="2">Pendiente</option>
                       <option value="3">Terminado</option>
