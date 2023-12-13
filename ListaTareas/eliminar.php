@@ -1,7 +1,7 @@
 <?php 
-include "connect.php";
+include "../includes/connect.php";
 $codigo = $_GET['codigo'];
 $eliminar = $conn->query("DELETE FROM tareas WHERE codigo = '$codigo'");
 
-header("Location: ../ListaTareas/index.php")
+header("Location: index.php")
 ?>
