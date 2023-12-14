@@ -27,7 +27,12 @@
             </section>
             <hr>
             <section class="section2">
+<<<<<<< HEAD
               <a href="./index.php"><i class="bi bi-house"> Inicio</i></a>
+=======
+<<<<<<< Updated upstream
+              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
+>>>>>>> ListaTareas
               <br>
               <a href="./ListaTareas/index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
@@ -35,7 +40,22 @@
               <br>
               <a href="./Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
+<<<<<<< HEAD
               <a href="./CrearUsuarios/index.php"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
+=======
+              <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
+=======
+              <a href="index.php"><i class="bi bi-house"> Inicio</i></a>
+              <br>
+              <a href="ListaTareas/index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <br>
+              <a href="Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
+              <br>
+              <a href="Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
+              <br>
+              <a href="CrearUsuarios/index.php"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
+>>>>>>> Stashed changes
+>>>>>>> ListaTareas
               <br>
             </section>
             <hr>

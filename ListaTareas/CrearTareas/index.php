@@ -28,13 +28,13 @@ include "../../includes/connect.php";
             </section>
             <hr>
             <section class="section2">
-              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
+              <a href="../../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href=".ListaTareas/listatareas.html"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <a href="../index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
-              <a href="Calendario/index.html"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="../../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
               <br>
-              <a href="Notificaciones/index.html"><i class="bi bi-bell">Notificaciones</i></a>
+              <a href="../../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
               <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
               <br>
@@ -158,7 +158,7 @@ include "../../includes/connect.php";
                 $editar = $conn->query("INSERT INTO tareas (titulo,descripcion,fecha_vencimiento,tblCategoriaId,tblPrioridadId,tblEstadoId) values ('$titulo','$descripcion','$fecha_vencimiento','$categoria','$prioridad','$estado')");
                 
                 if($editar){
-                header("Location: ../ListaTareas/index.php");
+                header("Location: index.php");
                 }
                 }
             ?>

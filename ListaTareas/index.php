@@ -29,13 +29,13 @@ include "../includes/connect.php";
             </section>
             <hr>
             <section class="section2">
-              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
+              <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href="ListaTareas/index.html"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <a href="index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
-              <a href="Calendario/"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
               <br>
-              <a href="Notificaciones/"><i class="bi bi-bell">Notificaciones</i></a>
+              <a href="../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
               <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
               <br>
@@ -94,8 +94,9 @@ include "../includes/connect.php";
                   $intervalodias = -$intervalodias;
 
               }
+            
                 ?>
-             
+                
                 <tr >
                     <th scope="row" ><?php echo $fila["codigo"];?></th>
                     <td  ><?= $fila['titulo'];?></td>
@@ -118,8 +119,8 @@ include "../includes/connect.php";
 
                     }
                     ?>
-                    <td ><a href="../includes/editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
-                    <td ><a href="../includes/eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" ><i class="bi bi-archive"></i></button></a></td>
+                    <td ><a href="editar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a></td>
+                    <td ><a href="eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" onclick="eliminar()" ><i class="bi bi-archive"></i></button></a></td>
                   </tr>
                   <?php              
                   }
