@@ -25,10 +25,12 @@ include "../includes/connect.php";
              <br>
              <i class="bi bi-person-circle">Brayan</i>
              </a>
-
+             <br>
             </section>
-            <hr>
             <section class="section2">
+              
+              <br>
+              <hr>
               <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
               <a href="index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
@@ -94,6 +96,7 @@ include "../includes/connect.php";
                   $intervalodias = -$intervalodias;
 
               }
+                $codigo = $fila['codigo'];
             
                 ?>
                 
@@ -102,9 +105,9 @@ include "../includes/connect.php";
                     <td  ><?= $fila['titulo'];?></td>
                     <?php 
                     if($intervalodias < 0){
-                      $conn->query("UPDATE tareas SET tblEstadoId='4'");
+                      $conn->query("UPDATE tareas SET tblEstadoId='4' WHERE codigo = $codigo");
                     }?>
-                    <td  ><?= $fila['estados'];?></td>
+                    <td  ><?= $fila['estados'];?></td> 
                     <td  ><?= $fila['categorias'];?></td>
                     <td  ><?= $fila['prioridades'];?></td>
                     <?php 
