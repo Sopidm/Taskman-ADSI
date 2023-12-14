@@ -1,5 +1,5 @@
 <?php 
-include "connect.php";
+include "../includes/connect.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,13 +28,13 @@ include "connect.php";
             </section>
             <hr>
             <section class="section2">
-              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
+              <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href=".ListaTareas/listatareas.html"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <a href="index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
-              <a href="Calendario/index.html"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
               <br>
-              <a href="Notificaciones/index.html"><i class="bi bi-bell">Notificaciones</i></a>
+              <a href="../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
               <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
               <br>
@@ -155,12 +155,10 @@ include "connect.php";
                   </div> -->
                   <div class="col-12">
                     <button class="btn btn-success" name="editar" type="submit">Guardar</button>
-                    <a href="../index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
+                    <a href="index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
                   </div>  
             </form>
             <?php 
-                include "connect.php";
-
                 if(isset($_POST['editar'])){
                     $titulo = $_POST['titulo'];
                     $descripcion = $_POST['descripcion'];
@@ -169,9 +167,12 @@ include "connect.php";
                     $prioridad = $_POST['prioridad'];
                     $estado = $_POST['estado'];
 
-                    $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo',descripcion = '$descripcion',fecha_vencimiento= '$fecha_vencimiento', tblCategoriaId='$categoria',tblPrioridadId='$prioridad',tblEstadoId='$estado' WHERE codigo='$codigo'");
+                    
+                     $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo',descripcion = '$descripcion',fecha_vencimiento= '$fecha_vencimiento', tblCategoriaId='$categoria',tblPrioridadId='$prioridad',tblEstadoId='$estado' WHERE codigo='$codigo'");
 
-                    header("Location: ../ListaTareas/index.php");
+                     if($insertar){
+                       header("Location: index.php");
+                     }
                     
                 }
                 ?>
