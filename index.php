@@ -43,7 +43,7 @@ if(isset($_SESSION['usuario'])){
                     
                     <form action="InicioSesion/login.php" class="formulario__login" method="POST"> 
                         <div id="imglogo">
-                            <img src="../images/taskman.jpg" width="90" height="90"   >
+                            <img src="images/logo.enc" width="90" height="90"   >
                             
                         </div>
                         
