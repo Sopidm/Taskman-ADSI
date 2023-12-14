@@ -30,9 +30,12 @@ include "../includes/connect.php";
             <section class="section2">
               <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
+              <br>
               <a href="index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
+              <br>
               <a href="../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
+              <br>
               <br>
               <a href="../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
@@ -85,7 +88,7 @@ include "../includes/connect.php";
                 <div class="col-md-4">
                   <label for="categoria" class="form-label">CATEGORÍA</label>
                   <select class="form-select" id="categoria" name="categoria">
-                    <option value="" disabled="disabled"><?= $row['categorias'];?></option>
+                    <option value="" ><?= $row['categorias'];?></option>
                     <option value="1">Personal</option>
                     <option value="2">Trabajo</option>
                     <option value="3">Estudio</option>
@@ -106,7 +109,7 @@ include "../includes/connect.php";
                   <div class="col-md-4">
                     <label for="prioridad" class="form-label">PRIORIDAD</label>
                     <select class="form-select" id="prioridad" name="prioridad">
-                      <option selected  value="" disabled="disabled"><?= $row['prioridades'];?></option>
+                      <option selected  value="" ><?= $row['prioridades'];?></option>
                       <option value="1">Alta</option>
                       <option value="2">Media</option>
                       <option value="3">Baja</option>
@@ -117,7 +120,7 @@ include "../includes/connect.php";
                   <div class="col-md-4">
                     <label for="estado" class="form-label">ESTADO</label>
                     <select class="form-select" id="estado" name="estado">
-                      <option selected  value="" disabled="disabled"><?= $row['estados'];?></option>
+                      <option selected  value="" ><?= $row['estados'];?></option>
                       <option value="1">En curso</option>
                       <option value="2">Pendiente</option>
                       <option value="3">Terminado</option>
@@ -167,13 +170,24 @@ include "../includes/connect.php";
                     $prioridad = $_POST['prioridad'];
                     $estado = $_POST['estado'];
 
-                    
-                     $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo',descripcion = '$descripcion',fecha_vencimiento= '$fecha_vencimiento', tblCategoriaId='$categoria',tblPrioridadId='$prioridad',tblEstadoId='$estado' WHERE codigo='$codigo'");
+                    $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo', descripcion = '$descripcion', fecha_vencimiento= '$fecha_vencimiento' WHERE codigo='$codigo'");
 
-                     if($insertar){
-                       header("Location: index.php");
-                     }
+                    if(!empty($categoria)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblCategoriaId = '$categoria' WHERE codigo='$codigo'");
+                    }
+                    if(!empty($prioridad)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblPrioridadId = '$prioridad' WHERE codigo='$codigo'");
+
+                    }
+                    if(!empty($estado)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblEstadoId = '$estado' WHERE codigo='$codigo'");
+
+                    }
                     
+                    if(isset($insertar)){
+                      header("Location: index.php");
+                    }
+          
                 }
                 ?>
 
