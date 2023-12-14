@@ -1,4 +1,14 @@
-<<<<<<< HEAD
+<?php 
+
+session_start();
+if(!isset($_SESSION['usuario'])){ echo '<script>
+        alert("Debes iniciar sesion");
+        window.location = "../index.php";
+    </script>';
+    session_destroy();  
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Nueva Notificación</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-=======
-<<<<<<< Updated upstream
-=======
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TASKMAN</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../styles.css">
-  </head>
   <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -35,7 +32,8 @@
              <a href="Perfil/index.html" ><img src="images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
              <br>
              <br>
-             <i class="bi bi-person-circle">Brayan</i>
+             <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
+
              </a>
 
             </section>
@@ -54,12 +52,11 @@
             </section>
             <hr>
             <section class="section3">
-              <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>
+              <a href="../InicioSesion/cerrar.php"><i class="bi bi-box-arrow-right">Salir</i></a>
               <br>
             </section>
         </div>
         <div class="contenido"> 
->>>>>>> ListaTareas
         <h2 class="text-center">Nueva Notificación</h2>
         <form action="">
             <div class="form-group">
@@ -108,16 +105,12 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
             <button type="reset" class="btn btn-danger">Cancelar</button>
         </form>
-<<<<<<< HEAD
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/
-=======
 
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
->>>>>>> Stashed changes
->>>>>>> ListaTareas

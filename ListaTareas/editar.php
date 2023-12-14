@@ -1,5 +1,13 @@
 <?php 
 include "../includes/connect.php";
+session_start();
+if(!isset($_SESSION['usuario'])){ echo '<script>
+        alert("Debes iniciar sesion");
+        window.location = "../index.php";
+    </script>';
+    session_destroy();  
+    die();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,7 +31,8 @@ include "../includes/connect.php";
              <a href="Perfil/index.html" ><img src="../../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
              <br>
              <br>
-             <i class="bi bi-person-circle">Luis</i>
+             <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
+
              </a>
             </section>
             <hr>
@@ -44,7 +53,7 @@ include "../includes/connect.php";
             </section>
             <hr>
             <section class="section3">
-              <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>
+              <a href="../InicioSesion/cerrar.php"><i class="bi bi-box-arrow-right">Salir</i></a>
               <br>
             </section>
         </div>
@@ -158,7 +167,7 @@ include "../includes/connect.php";
                   </div> -->
                   <div class="col-12">
                     <button class="btn btn-success" name="editar" type="submit" onclick="redireccion()">Guardar</button>
-                    <a href="index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
+                    <a href="index.php"><button  type="button" class="btn btn-outline-danger" onclick="redireccion()" >Cancelar</button></a>
                   </div>  
             </form>
             <?php 
@@ -183,11 +192,7 @@ include "../includes/connect.php";
                       $insertar = $conn->query("UPDATE tareas Set 	tblEstadoId = '$estado' WHERE codigo='$codigo'");
 
                     }
-                    
-                    if(isset($insertar)){
-                      header("Location: index.php");
-                    }
-          
+                       
                 }
                 ?>
 

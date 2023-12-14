@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['usuario'])){ echo '<script>
+        alert("Debes iniciar sesion");
+        window.location = "../index.php";
+    </script>';
+    session_destroy();  
+    die();
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +31,7 @@
             <a href="../Calendario/index.php" ><img src="../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
               <br>
               <br>
-                <i class="bi bi-person-circle">Eduar Jara</i>
+              <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
                 </a>
                 </section>
                 <hr>
