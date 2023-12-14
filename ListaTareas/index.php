@@ -1,5 +1,14 @@
 <?php
 include "../includes/connect.php";
+
+session_start();
+if(!isset($_SESSION['usuario'])){ echo '<script>
+        alert("Debes iniciar sesion");
+        window.location = "../index.php";
+    </script>';
+    session_destroy();  
+    die();
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -20,10 +29,10 @@ include "../includes/connect.php";
     <div class="container">
         <div class="usuario">
             <section class="section">
-             <a href="Perfil/index.html" ><img src="../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
+             <a href="Perfil/index.html" ><img src="../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar" style="width: 80px; height: 70% !important;">
              <br>
              <br>
-             <i class="bi bi-person-circle">Brayan</i>
+             <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
              </a>
              <br>
             </section>
