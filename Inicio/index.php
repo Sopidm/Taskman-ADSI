@@ -48,8 +48,8 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
 		  <p>&nbsp;</p>
         <div class="secciones"> <a href="../ListaTareas/index.php" target="_blank"><img src="images/task.png" title="Sección Tareas"></a>
           <a href="#" target="_blank"><img src="images/user.png" title="Sección Usuarios"></a>
-          <a href="../Calendario/index.html" target="_blank"><img src="images/cal.png" title="Sección Calendarios" ></a> 
-          <a href="../Notificaciones/index.html" target="_blank"><img src="images/noti.png" title="Sección Notificaciones" ></a>
+          <a href="../Calendario/index.php" target="_blank"><img src="images/cal.png" title="Sección Calendarios" ></a> 
+          <a href="../Notificaciones/index.php" target="_blank"><img src="images/noti.png" title="Sección Notificaciones" ></a>
         </div>
     </div>
       <div class="card">

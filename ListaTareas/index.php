@@ -53,7 +53,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
             </section>
             <hr>
             <section class="section3">
-              <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>
+              <a href="../InicioSesion/cerrar.php"><i class="bi bi-box-arrow-right">Salir</i></a>
               <br>
             </section>
         </div>
