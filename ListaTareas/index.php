@@ -123,7 +123,8 @@ include "../includes/connect.php";
                     <td ><a href="eliminar.php?codigo=<?php echo $fila['codigo'];?>"><button type="button" class="btn btn-danger" onclick="eliminar()" ><i class="bi bi-archive"></i></button></a></td>
                   </tr>
                   <?php              
-                  }
+                  
+                   }
                    ?>
               </tbody>
              
