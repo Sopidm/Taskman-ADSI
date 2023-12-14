@@ -154,7 +154,7 @@ include "../includes/connect.php";
                         </select>
                   </div> -->
                   <div class="col-12">
-                    <button class="btn btn-success" name="editar" type="submit">Guardar</button>
+                    <button class="btn btn-success" name="editar" type="submit" onclick="redireccion()">Guardar</button>
                     <a href="index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
                   </div>  
             </form>
@@ -181,7 +181,10 @@ include "../includes/connect.php";
     </div>
     
     
-
+    <script>
+      function redireccion() {
+      window.location.href = 'index.php';
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
