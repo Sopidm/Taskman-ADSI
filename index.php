@@ -1,53 +1,70 @@
-<!doctype html>
+<?php 
+
+session_start();
+if(isset($_SESSION['usuario'])){
+    header("Location: inicio/index.php");
+}
+?>
+
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TASKMAN</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Register - MagtimusPro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img src="images/logo.enc" width="50px" height="60px">TASKMAN</a>
-        </div>
-      </nav>
-    <div class="container">
-        <div class="usuario">
-            <section class="section">
-              
-             <a href="Perfil/index.html" ><img src="images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
-             <br>
-             <br>
-             <i class="bi bi-person-circle">Brayan</i>
-             </a>
+</head>
+<body>
 
-            </section>
-            <hr>
-            <section class="section2">
-              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
-              <br>
-              <a href="ListaTareas/index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
-              <br>
-              <a href="Calendario/"><i class="bi bi-calendar">Calendaririo</i></a>
-              <br>
-              <a href="Notificaciones/"><i class="bi bi-bell">Notificaciones</i></a>
-              <br>
-              <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
-              <br>
-            </section>
-            <hr>
-            <section class="section3">
-              <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>
-              <br>
-            </section>
-        </div>
-        <div class="contenido"> lista
+        <main>
 
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+            <div class="contenedor__todo">
+                <div class="caja__trasera">
+                    <div class="caja__trasera-login">
+                        <h3>¿Ya tienes una cuenta?</h3>
+                        <p>Inicia sesión para entrar en la página</p>
+                        <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                    </div>
+                    <div class="caja__trasera-register">
+                        <h3>¿Aún no tienes una cuenta?</h3>
+                        <p>Regístrate para que puedas iniciar sesión</p>
+                        <button id="btn__registrarse">Regístrarse</button>
+                    </div>
+                </div>
+
+                <!--Formulario de Login y registro-->
+                <div class="contenedor__login-register">
+                    <!--Login-->
+                    
+                    <form action="InicioSesion/login.php" class="formulario__login" method="POST"> 
+                        <div id="imglogo">
+                            <img src="images/logo.enc" width="90" height="90"   >
+                            
+                        </div>
+                        
+                        <h2>Iniciar Sesión</h2>
+                        <input type="text" placeholder="Usuario" name="usuario">
+                        <input type="password" placeholder="Contraseña" name="contrasena">
+                        <button>Entrar</button>
+                    </form>
+
+                    <!--Register-->
+                    <form action="InicioSesion/registro.php" class="formulario__register" method="POST">
+                        <h2>Regístrarse</h2>
+                        <input type="text" placeholder="Usuario" name="usuario">
+                        <input type="password" placeholder="Contraseña" name="contrasena">
+                        <button>Regístrarse</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="js/sesion.js"></script>
+</body>
 </html>

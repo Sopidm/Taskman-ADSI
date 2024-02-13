@@ -1,5 +1,13 @@
 <?php 
-include "connect.php";
+include "../includes/connect.php";
+session_start();
+if(!isset($_SESSION['usuario'])){ echo '<script>
+        alert("Debes iniciar sesion");
+        window.location = "../index.php";
+    </script>';
+    session_destroy();  
+    die();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,34 +22,38 @@ include "connect.php";
   <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.php"><img src="../../images/logo.enc" width="50px" height="60px">TASKMAN</a>
+          <a class="navbar-brand" href="index.php"><img src="../images/logo.enc" width="50px" height="60px">TASKMAN</a>
         </div>
       </nav>
     <div class="container">
         <div class="usuario">
             <section class="section"> 
-             <a href="Perfil/index.html" ><img src="../../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
+             <a href="Perfil/index.html" ><img src="../images/avatar-icon-vector-illustration.jpg" alt="" class="avatar">
              <br>
              <br>
-             <i class="bi bi-person-circle">Luis</i>
+             <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
+
              </a>
             </section>
             <hr>
             <section class="section2">
-              <a href="index.html"><i class="bi bi-house"> Inicio</i></a>
+              <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href=".ListaTareas/listatareas.html"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
-              <a href="Calendario/index.html"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
               <br>
-              <a href="Notificaciones/index.html"><i class="bi bi-bell">Notificaciones</i></a>
+              <br>
+              <a href="../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
+              <br>
+              <br>
+              <a href="../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
               <br>
               <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
               <br>
             </section>
             <hr>
             <section class="section3">
-              <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>
+              <a href="../InicioSesion/cerrar.php"><i class="bi bi-box-arrow-right">Salir</i></a>
               <br>
             </section>
         </div>
@@ -85,7 +97,7 @@ include "connect.php";
                 <div class="col-md-4">
                   <label for="categoria" class="form-label">CATEGORÍA</label>
                   <select class="form-select" id="categoria" name="categoria">
-                    <option value=""><?= $row['categorias'];?></option>
+                    <option value="" ><?= $row['categorias'];?></option>
                     <option value="1">Personal</option>
                     <option value="2">Trabajo</option>
                     <option value="3">Estudio</option>
@@ -106,7 +118,7 @@ include "connect.php";
                   <div class="col-md-4">
                     <label for="prioridad" class="form-label">PRIORIDAD</label>
                     <select class="form-select" id="prioridad" name="prioridad">
-                      <option selected disabled value=""><?= $row['prioridades'];?></option>
+                      <option selected  value="" ><?= $row['prioridades'];?></option>
                       <option value="1">Alta</option>
                       <option value="2">Media</option>
                       <option value="3">Baja</option>
@@ -117,7 +129,7 @@ include "connect.php";
                   <div class="col-md-4">
                     <label for="estado" class="form-label">ESTADO</label>
                     <select class="form-select" id="estado" name="estado">
-                      <option selected disabled value=""><?= $row['estados'];?></option>
+                      <option selected  value="" ><?= $row['estados'];?></option>
                       <option value="1">En curso</option>
                       <option value="2">Pendiente</option>
                       <option value="3">Terminado</option>
@@ -154,13 +166,11 @@ include "connect.php";
                         </select>
                   </div> -->
                   <div class="col-12">
-                    <button class="btn btn-success" name="editar" type="submit">Guardar</button>
-                    <a href="../index.php"><button  type="button" class="btn btn-outline-danger">Cancelar</button></a>
+                    <button class="btn btn-success" name="editar" type="submit" onclick="redireccion()">Guardar</button>
+                    <a href="index.php"><button  type="button" class="btn btn-outline-danger" onclick="redireccion()" >Cancelar</button></a>
                   </div>  
             </form>
             <?php 
-                include "connect.php";
-
                 if(isset($_POST['editar'])){
                     $titulo = $_POST['titulo'];
                     $descripcion = $_POST['descripcion'];
@@ -169,10 +179,20 @@ include "connect.php";
                     $prioridad = $_POST['prioridad'];
                     $estado = $_POST['estado'];
 
-                    $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo',descripcion = '$descripcion',fecha_vencimiento= '$fecha_vencimiento', tblCategoriaId='$categoria',tblPrioridadId='$prioridad',tblEstadoId='$estado' WHERE codigo='$codigo'");
+                    $insertar = $conn->query("UPDATE tareas SET titulo = '$titulo', descripcion = '$descripcion', fecha_vencimiento= '$fecha_vencimiento' WHERE codigo='$codigo'");
 
-                    header("Location: ../ListaTareas/index.php");
-                    
+                    if(!empty($categoria)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblCategoriaId = '$categoria' WHERE codigo='$codigo'");
+                    }
+                    if(!empty($prioridad)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblPrioridadId = '$prioridad' WHERE codigo='$codigo'");
+
+                    }
+                    if(!empty($estado)){
+                      $insertar = $conn->query("UPDATE tareas Set 	tblEstadoId = '$estado' WHERE codigo='$codigo'");
+
+                    }
+                       
                 }
                 ?>
 
@@ -180,7 +200,10 @@ include "connect.php";
     </div>
     
     
-
+    <script>
+      function redireccion() {
+      window.location.href = 'index.php';
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
