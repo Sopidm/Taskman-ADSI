@@ -80,24 +80,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                     <option value="ninguna">Ninguna</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="asignacion">Asignación</label>
-                <select class="form-control" id="asignacion" name="asignacion">
-                    <option value="usuario">Usuario</option>
-                    <option value="tarea_creada">Tarea Creada</option>
-                    <option value="tarea_cerrada">Tarea Cerrada</option>
-                    <option value="tarea_entregada">Tarea Entregada</option>
-                    <option value="fecha_notificacion">Fecha Notificación</option>
-                    <option value="nuevo_usuario_creado">Nuevo Usuario Creado</option>
-                    <option value="ninguna">Ninguna</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="supervisor">Supervisor</label>
-                <select class="form-control" id="supervisor" name="supervisor">
-                    <!-- Aquí deberás agregar las opciones de supervisores disponibles -->
-                </select>
-            </div>
+            
             <div class="form-group">
                 <label for="fecha_envio">Fecha de Envío de la Notificación</label>
                 <input type="date" class="form-control" id="fecha_envio" name="fecha_envio" required>
