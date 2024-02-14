@@ -58,33 +58,37 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
             </section>
         </div>
         <div class="contenido"> 
-        <h2 class="text-center">Notificaciones</h2>
-        <br>
-        <a href="crear.php"><button>Crear Notificacion</button></a>
-        <br>
-        <table>
-          <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Fecha</th>
-          </tr>
-          <?php 
-          if($notificaciones_total->num_rows > 0){
-          while($fila_notificaciones = $notificaciones_total->fetch_assoc()){  ?>
-          <tr>
-            <td><input type="chekbox"></td>
-            <td><?= $fila['nombre'] ?></td>
-            <td><?= $fila['fecha'] ?></td>
-          </tr>
-          <?php }
-          }else{?>
-          <tr>
-            <td></td>
-            <td><h3>No tienes notificaciones</h3></td>
-            <td></td>
-          </tr>
-          <?php } ?>
-        </table>
+        <h2 class="text-center">Nueva Notificación</h2>
+        <form action="">
+            <div class="form-group">
+                <label for="nombre_notificacion">Nombre Notificación</label>
+                <input type="text" class="form-control" id="nombre_notificacion" name="nombre_notificacion" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="criterios">Criterios</label>
+                <select class="form-control" id="criterios" name="criterios">
+                    <option value="usuario_asignado">Usuario Asignado</option>
+                    <option value="tarea_por_cerrarse">Tarea por Cerrarse</option>
+                    <option value="tarea_creada">Tarea Creada</option>
+                    <option value="tarea_cerrada">Tarea Cerrada</option>
+                    <option value="tarea_entregada">Tarea Entregada</option>
+                    <option value="fecha_notificacion">Fecha Notificación</option>
+                    <option value="nuevo_usuario_creado">Nuevo Usuario Creado</option>
+                    <option value="ninguna">Ninguna</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="fecha_envio">Fecha de Envío de la Notificación</label>
+                <input type="date" class="form-control" id="fecha_envio" name="fecha_envio" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="index.php"><button type="button" class="btn btn-danger">Cancelar</button></a>
+        </form>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
