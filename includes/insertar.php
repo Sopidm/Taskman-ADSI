@@ -19,8 +19,9 @@ if(isset($_POST['insertar'])){
     
     $id_tarea = $conn->insert_id;
 
+    $notificacion_auditor = $conn->query("INSERT INTO notificaciones_usuarios(usuario_id,notificaciones_id,tarea_id) values('$auditor','1','$id_tarea')");
     // Recorrer el array de usuarios asignados y realizar la inserción en la nueva tabla
-    foreach ($asignados as $usuario) {
+    foreach($asignados as $usuario) {
     $nueva_asignacion = $conn->query("INSERT INTO usuariotarea (tblUsuarioCodigo, tblTareaCodigo) VALUES ('$usuario', '$id_tarea')");
 }
 
@@ -33,5 +34,5 @@ $ususarios = $conn->query("SELECT * from usuario");
 
 header("../ListaTareas/index.php");
 
-mysqli_close($conn);
+
 
