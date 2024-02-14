@@ -1,8 +1,9 @@
 <?php 
+session_start();
 include "../includes/connect.php";
 $usuario= $_POST['usuario'];
 $contrasena= $_POST['contrasena'];
- session_start();
+
 $validar = $conn->query("SELECT * FROM usuario WHERE usuario = '$usuario' and contrasena = '$contrasena' ");
 
 if(mysqli_num_rows($validar) >0){
