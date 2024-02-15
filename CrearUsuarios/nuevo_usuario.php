@@ -24,7 +24,7 @@
         </script>';
         exit;
         }
-        $query= $conn->query("INSERT INTO usuario (usuario,contrasena) VALUES ('$usuario','$contrasena')");
+        $query= $conn->query("INSERT INTO usuario (usuario,contrasena,contra_tempo) VALUES ('$usuario','$contrasena','$contrasena')");
         
         $nuevo_usuario_id = mysqli_insert_id($conn);
         //la notificacion le llega al usuario que creo al nuevo ususario
