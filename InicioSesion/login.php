@@ -19,4 +19,6 @@ if(mysqli_num_rows($validar) >0){
         window.location = "../index.php";
     </script>';
 }
+$conn->close();
+
 ?>

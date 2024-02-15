@@ -137,6 +137,8 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                   <?php              
                   
                    }
+                  $conn->close();
+
                    ?>
               </tbody>
              
