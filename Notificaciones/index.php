@@ -62,6 +62,8 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
         <br>
         <a href="crear.php"><button>Crear Notificacion</button></a>
         <br>
+        <br>
+        <h3>Notificaciones</h3>
         <table>
           <tr>
             <th></th>
@@ -71,13 +73,27 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
           <?php 
           if($notificaciones_total->num_rows > 0){
           
-          while($fila_notificaciones = $notificaciones_total->fetch_assoc()){  ?>
+          while($fila_notificaciones = $notificaciones_total->fetch_assoc()){ 
+            ?>
           <tr class="fila-notificacion" data-nombre="<?= $fila_notificaciones['nombre'] ?>" data-fecha="<?= $fila_notificaciones['fecha'] ?>" data-tarea="<?= $fila_notificaciones['titulo'] ?>" >
             <td><input type="checkbox"></td>
             <td><?= $fila_notificaciones['nombre'] ?></td>
             <td><?= $fila_notificaciones['fecha'] ?></td>
           </tr>
-          <?php }
+          <?php 
+          if($notificaciones_total_nuevo_usuario->num_rows > 0){
+            while($fila_notificaciones_nuevo_usu = $notificaciones_total_nuevo_usuario->fetch_assoc()){
+            ?>
+          <tr class="fila-notificacion-nuevo-user" data-nombre="<?= $fila_notificaciones_nuevo_usu['nombre'] ?>" data-fecha="<?= $fila_notificaciones_nuevo_usu['fecha'] ?>" data-usuario="<?= $fila_notificaciones_nuevo_usu['usuario'] ?>" data-contrasena="<?= $fila_notificaciones_nuevo_usu['contra_tempo'] ?>">
+          
+            <td><input type="checkbox"></td>
+            <td><?= $fila_notificaciones_nuevo_usu['nombre'] ?></td>
+            <td><?= $fila_notificaciones_nuevo_usu['fecha'] ?></td>
+          </tr>
+          <?php
+            }
+          }
+          }
           }else{?>
           <tr>
             <td></td>
@@ -108,6 +124,26 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                 </div>
             </div>
         </div>
+        <!-- Modal para mostrar detalles de notificación -->
+    <div class="modal fade" id="modalDetalleNotificacionUsuarioNuevo" tabindex="-1" role="dialog" aria-labelledby="modalDetalleNotificacionLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDetalleNotificacionLabel">Detalles de Notificación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre:</strong> <span id="nombreNotificacionUsusu"></span></p>
+                        <p><strong>Fecha:</strong> <span id="fechaNotificacionusu"></span></p> <p><strong>Usuario Creado:</strong> <span id="UsusarioCreado"></span></p>
+                        <p><strong>Contraseña Temporal:</strong> <span id="ContraTempo"></span></p>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -128,8 +164,27 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
               $('#modalDetalleNotificacion').modal('hide');
 
             });
+
+            $('.fila-notificacion-nuevo-user').click(function() {
+                var nombre = $(this).data('nombre');
+                var fecha = $(this).data('fecha');
+                var usuario = $(this).data('usuario');
+                var contraTempo = $(this).data('contrasena');
+                $('#nombreNotificacionUsusu').text(nombre);
+                $('#fechaNotificacionusu').text(fecha);
+                $('#UsusarioCreado').text(usuario);
+                $('#ContraTempo').text(contraTempo);
+                $('#modalDetalleNotificacionUsuarioNuevo').modal('show');
+            });
+
+            $('.close').click(function(){
+              $('#modalDetalleNotificacionUsuarioNuevo').modal('hide');
+
+            });
         });
-    </script>   
+    </script>  
+    
+       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
