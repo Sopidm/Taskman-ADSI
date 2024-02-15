@@ -248,7 +248,6 @@ ALTER TABLE `notificaciones`
 ALTER TABLE `notificaciones_usuarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id_foren` (`usuario_id`),
-  ADD KEY `tarea_id_foren` (`tarea_id`),
   ADD KEY `noti_foren` (`notificacion_id`);
 
 --

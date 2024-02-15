@@ -1,5 +1,5 @@
 <?php 
-
+include "../Notificaciones/notificacion.php";
 session_start();
 
 

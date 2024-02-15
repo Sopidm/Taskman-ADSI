@@ -52,7 +52,7 @@ while ($fila = mysqli_fetch_assoc($query)){
 
             if($tareas_usuarios->num_rows > 0){
                 $fila_tarea =  $tareas_usuarios ->fetch_assoc();
-                $tareas_usuarios -> $fila_tarea['tblTareaCodigo'];
+                $tareas_usuarios = $fila_tarea['tblTareaCodigo'];
 
         //hacerla de 2 maneras, 1 hace una consulta por cada usuario y mira que tarea cumple con el intervalo y despues verifica a que usuario se le dio la tarea y se le envia la noti, 2 con el usuario de session mirar que tarea tiene y si cumplen con el intervalo
                     if($intervalodias >= 7){
@@ -69,7 +69,7 @@ while ($fila = mysqli_fetch_assoc($query)){
                             }
                         }
                     } if($intervalodias < 4 and $intervalodias >= 0){
-                        $notificacion_1 = $conn->query("SELECT * from notificaciones_usuarios where usuario_id = '$usuario_id' and notificacion_id = '1' and tarea_id = '$codigo' ");
+                        $notificacion_1 = $conn->query("SELECT * from notificaciones_usuarios where usuario_id = '$usuario_id' and notificacion_id = '2' and tarea_id = '$codigo' ");
 
                         if(mysqli_num_rows($notificacion_1)> 0){
 
@@ -81,7 +81,7 @@ while ($fila = mysqli_fetch_assoc($query)){
                         }
                     
                     }if($intervalodias < 0){
-                        $notificacion_1 = $conn->query("SELECT * from notificaciones_usuarios where usuario_id = '$usuario_id' and notificacion_id = '1' and tarea_id = '$codigo' ");
+                        $notificacion_1 = $conn->query("SELECT * from notificaciones_usuarios where usuario_id = '$usuario_id' and notificacion_id = '3' and tarea_id = '$codigo' ");
 
                         if(mysqli_num_rows($notificacion_1)> 0){
 

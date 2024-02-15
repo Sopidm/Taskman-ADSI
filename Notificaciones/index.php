@@ -70,11 +70,12 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
           </tr>
           <?php 
           if($notificaciones_total->num_rows > 0){
+          
           while($fila_notificaciones = $notificaciones_total->fetch_assoc()){  ?>
           <tr>
-            <td><input type="chekbox"></td>
-            <td><?= $fila['nombre'] ?></td>
-            <td><?= $fila['fecha'] ?></td>
+            <td><input type="checkbox"></td>
+            <td><?= $fila_notificaciones['nombre'] ?></td>
+            <td><?= $fila_notificaciones['fecha'] ?></td>
           </tr>
           <?php }
           }else{?>

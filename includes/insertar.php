@@ -42,6 +42,10 @@ if(isset($_POST['insertar'])){
 $ususarios = $conn->query("SELECT * from usuario");
 
 
+$conn->close();
+
+
+
 
 
 
