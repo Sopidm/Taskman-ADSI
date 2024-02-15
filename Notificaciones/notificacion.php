@@ -105,6 +105,20 @@ while ($fila = mysqli_fetch_assoc($query)){
 
 //Mostrar notificaciones
 
+//si tiene un usuario creado
+
+
+$notificaciones_total_nuevo_usuario = $conn->query(("SELECT notificaciones_usuarios.*, noti.nombre , usu.usuario, usu.contra_tempo
+FROM notificaciones_usuarios
+INNER JOIN notificaciones AS noti ON notificaciones_usuarios.notificacion_id = noti.id
+INNER JOIN usuario as usu on notificaciones_usuarios.id_usuario_creado = usu.codigo
+WHERE notificaciones_usuarios.usuario_id ='$usuario_id'"));
+
+
+
+
+
+
 $notificaciones_total = $conn->query(("SELECT notificaciones_usuarios.*, noti.nombre ,tare.titulo
 FROM notificaciones_usuarios
 INNER JOIN notificaciones AS noti ON notificaciones_usuarios.notificacion_id = noti.id
