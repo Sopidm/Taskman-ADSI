@@ -72,7 +72,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
           if($notificaciones_total->num_rows > 0){
           
           while($fila_notificaciones = $notificaciones_total->fetch_assoc()){  ?>
-          <tr>
+          <tr class="fila-notificacion" data-nombre="<?= $fila_notificaciones['nombre'] ?>" data-fecha="<?= $fila_notificaciones['fecha'] ?>" data-tarea="<?= $fila_notificaciones['titulo'] ?>" >
             <td><input type="checkbox"></td>
             <td><?= $fila_notificaciones['nombre'] ?></td>
             <td><?= $fila_notificaciones['fecha'] ?></td>
@@ -88,10 +88,48 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
         </table>
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
+    <!-- Modal para mostrar detalles de notificación -->
+    <div class="modal fade" id="modalDetalleNotificacion" tabindex="-1" role="dialog" aria-labelledby="modalDetalleNotificacionLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDetalleNotificacionLabel">Detalles de Notificación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre:</strong> <span id="nombreNotificacion"></span></p>
+                        <p><strong>Fecha:</strong> <span id="fechaNotificacion"></span></p> <p><strong>Tarea:</strong> <span id="tituloTarea"></span></p>
+                       
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('.fila-notificacion').click(function() {
+                var nombre = $(this).data('nombre');
+                var fecha = $(this).data('fecha');
+                var tarea = $(this).data('tarea');
+                $('#nombreNotificacion').text(nombre);
+                $('#fechaNotificacion').text(fecha);
+                $('#tituloTarea').text(tarea);
+                $('#modalDetalleNotificacion').modal('show');
+            });
+
+            $('.close').click(function(){
+              $('#modalDetalleNotificacion').modal('hide');
+
+            });
+        });
+    </script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

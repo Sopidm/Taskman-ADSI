@@ -105,9 +105,10 @@ while ($fila = mysqli_fetch_assoc($query)){
 
 //Mostrar notificaciones
 
-$notificaciones_total = $conn->query(("SELECT notificaciones_usuarios.*, noti.nombre 
+$notificaciones_total = $conn->query(("SELECT notificaciones_usuarios.*, noti.nombre ,tare.titulo
 FROM notificaciones_usuarios
 INNER JOIN notificaciones AS noti ON notificaciones_usuarios.notificacion_id = noti.id
+INNER JOIN tareas as tare on notificaciones_usuarios.tarea_id = tare.codigo
 WHERE notificaciones_usuarios.usuario_id ='$usuario_id'"));
 
 
