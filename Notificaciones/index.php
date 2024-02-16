@@ -64,31 +64,35 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
         <br>
         <br>
         <h3>Notificaciones</h3>
-        <table>
+        <table class="table table-striped">
+          <thead>
           <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Fecha</th>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha</th>
           </tr>
+          </thead>
           <?php 
           if($notificaciones_total->num_rows > 0){
           
           while($fila_notificaciones = $notificaciones_total->fetch_assoc()){ 
             ?>
-          <tr class="fila-notificacion" data-nombre="<?= $fila_notificaciones['nombre'] ?>" data-fecha="<?= $fila_notificaciones['fecha'] ?>" data-tarea="<?= $fila_notificaciones['titulo'] ?>" >
+          <tr class="fila-notificacion" data-id="<?= $fila_notificaciones['id'] ?>" data-nombre="<?= $fila_notificaciones['nombre'] ?>" data-fecha="<?= $fila_notificaciones['fecha'] ?>" data-tarea="<?= $fila_notificaciones['titulo'] ?>" >
             <td><input type="checkbox"></td>
             <td><?= $fila_notificaciones['nombre'] ?></td>
             <td><?= $fila_notificaciones['fecha'] ?></td>
+            
           </tr>
           <?php 
           if($notificaciones_total_nuevo_usuario->num_rows > 0){
             while($fila_notificaciones_nuevo_usu = $notificaciones_total_nuevo_usuario->fetch_assoc()){
             ?>
-          <tr class="fila-notificacion-nuevo-user" data-nombre="<?= $fila_notificaciones_nuevo_usu['nombre'] ?>" data-fecha="<?= $fila_notificaciones_nuevo_usu['fecha'] ?>" data-usuario="<?= $fila_notificaciones_nuevo_usu['usuario'] ?>" data-contrasena="<?= $fila_notificaciones_nuevo_usu['contra_tempo'] ?>">
+          <tr class="fila-notificacion-nuevo-user" data-id="<?= $fila_notificaciones_nuevo_usu['id'] ?>" data-nombre="<?= $fila_notificaciones_nuevo_usu['nombre'] ?>" data-fecha="<?= $fila_notificaciones_nuevo_usu['fecha'] ?>" data-usuario="<?= $fila_notificaciones_nuevo_usu['usuario'] ?>" data-contrasena="<?= $fila_notificaciones_nuevo_usu['contra_tempo'] ?>">
           
             <td><input type="checkbox"></td>
             <td><?= $fila_notificaciones_nuevo_usu['nombre'] ?></td>
             <td><?= $fila_notificaciones_nuevo_usu['fecha'] ?></td>
+            
           </tr>
           <?php
             }
@@ -120,7 +124,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                         <p><strong>Fecha:</strong> <span id="fechaNotificacion"></span></p> <p><strong>Tarea:</strong> <span id="tituloTarea"></span></p>
                        
                     </div>
-                    
+                    <a id="id_eliminarnotificacion" href=""><button type="button" class="btn btn-danger" onclick="eliminar()" ><i class="bi bi-archive"></i></button></a>
                 </div>
             </div>
         </div>
@@ -140,7 +144,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                         <p><strong>Contraseña Temporal:</strong> <span id="ContraTempo"></span></p>
                        
                     </div>
-                    
+                    <a id="id_eliminarnotificacionusu"  href=""><button type="button" class="btn btn-danger" onclick="eliminar()" ><i class="bi bi-archive"></i></button></a>
                 </div>
             </div>
         </div>
@@ -151,6 +155,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
     <script>
         $(document).ready(function() {
             $('.fila-notificacion').click(function() {
+                var id = $(this).data('id');
                 var nombre = $(this).data('nombre');
                 var fecha = $(this).data('fecha');
                 var tarea = $(this).data('tarea');
@@ -158,6 +163,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                 $('#fechaNotificacion').text(fecha);
                 $('#tituloTarea').text(tarea);
                 $('#modalDetalleNotificacion').modal('show');
+                $('#id_eliminarnotificacion').attr('href', 'eliminar.php?codigo=' + id);
             });
 
             $('.close').click(function(){
@@ -166,6 +172,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
             });
 
             $('.fila-notificacion-nuevo-user').click(function() {
+                var id = $(this).data('id');
                 var nombre = $(this).data('nombre');
                 var fecha = $(this).data('fecha');
                 var usuario = $(this).data('usuario');
@@ -175,6 +182,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
                 $('#UsusarioCreado').text(usuario);
                 $('#ContraTempo').text(contraTempo);
                 $('#modalDetalleNotificacionUsuarioNuevo').modal('show');
+                $('#id_eliminarnotificacionusu').attr('href', 'eliminar.php?codigo=' + id);
             });
 
             $('.close').click(function(){
