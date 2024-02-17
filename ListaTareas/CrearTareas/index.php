@@ -11,7 +11,7 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TASKMAN</title>
@@ -37,15 +37,18 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
             </section>
             <hr>
             <section class="section2">
+              
+              <br>
+              <hr>
               <a href="../../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href="../index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <a href="../index.php"><i class="bi bi-card-checklist"> lista de Tareas</i></a>
               <br>
-              <a href="../../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="../../Calendario/index.php"><i class="bi bi-calendar"> Calendario</i></a>
               <br>
-              <a href="../../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
+              <a href="../../Notificaciones/index.php"><i class="bi bi-bell"> Notificaciones</i></a>
               <br>
-              <a href="Notificaciones/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
+              <a href="Notificaciones/"><i class="bi bi-pencil-square"> Crear Usuarios</i></a>
               <br>
             </section>
             <hr>

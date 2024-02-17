@@ -10,14 +10,13 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TASKMAN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
     <nav class="navbar bg-body-tertiary">
@@ -33,20 +32,21 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
               <br>
               <i class="bi bi-person-circle"><?php echo $_SESSION['usuario'];?></i>
                 </a>
-                </section>
-                <hr>
                 <section class="section2">
-                  <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
-                  <br>
-                  <a href="../ListaTareas/index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
-                  <br>
-                  <a href="index.php"><i class="bi bi-calendar">Calendaririo</i></a>
-                  <br>
-                  <a href="../Notificaciones/index.php"><i class="bi bi-bell">Notificaciones</i></a>
-                  <br>
-                  <a href="../CrearUsuarios/"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
-                  <br>
-                </section>
+              
+              <br>
+              <hr>
+              <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
+              <br>
+              <a href="../ListaTareas/index.php"><i class="bi bi-card-checklist"> lista de Tareas</i></a>
+              <br>
+              <a href="../Calendario/index.php"><i class="bi bi-calendar"> Calendario</i></a>
+              <br>
+              <a href="../Notificaciones/index.php"><i class="bi bi-bell"> Notificaciones</i></a>
+              <br>
+              <a href="Notificaciones/"><i class="bi bi-pencil-square"> Crear Usuarios</i></a>
+              <br>
+            </section>
                 <hr>
                 <section class="section3">
                   <a href="Salir/"><i class="bi bi-box-arrow-right">Salir</i></a>

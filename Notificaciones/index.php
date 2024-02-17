@@ -13,12 +13,13 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <title>Nueva Notificación</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TASKMAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
-</head>
+  </head>
 <body>
   <body>
     <nav class="navbar bg-body-tertiary">
@@ -37,18 +38,21 @@ if(!isset($_SESSION['usuario'])){ echo '<script>
 
              </a>
 
-            </section>
+             </section>
             <hr>
             <section class="section2">
+              
+              <br>
+              <hr>
               <a href="../index.php"><i class="bi bi-house"> Inicio</i></a>
               <br>
-              <a href="../ListaTareas/index.php"><i class="bi bi-card-checklist">lista de Tareas</i></a>
+              <a href="../ListaTareas/index.php"><i class="bi bi-card-checklist"> lista de Tareas</i></a>
               <br>
-              <a href="../Calendario/index.php"><i class="bi bi-calendar">Calendaririo</i></a>
+              <a href="../Calendario/index.php"><i class="bi bi-calendar"> Calendario</i></a>
               <br>
-              <a href="index.php"><i class="bi bi-bell">Notificaciones</i></a>
+              <a href="../Notificaciones/index.php"><i class="bi bi-bell"> Notificaciones</i></a>
               <br>
-              <a href="../CrearUsuarios/index.php"><i class="bi bi-pencil-square">Crear Usuarios</i></a>
+              <a href="Notificaciones/"><i class="bi bi-pencil-square"> Crear Usuarios</i></a>
               <br>
             </section>
             <hr>
